@@ -23,7 +23,7 @@ Using this an attacker could inject malicious code into the router. These produc
 
 ## Recovery
 
-During the discovery of this expoit I had to recover the router from the bootloop. After trying to press the reset button for different lengths to no avail, I figured out that holding the WPS button while booting up the Router will cause it to stop bootlooping and request a file called "firmware.bin" over TFTP on the IP address 192.168.10.100. Flashing the original firmware on it has no effect however, as the nvram is not affected by flashing such an image. Surprisingly enough, OpenWRT offers a build for this model of router and flashing that onto the router exposes an SSH shell to the OpenWRT ASH. 
+During the discovery of this exploit I had to recover the router from the bootloop. After trying to press the reset button for different lengths to no avail, I figured out that holding the WPS button while booting up the Router will cause it to stop bootlooping and request a file called "firmware.bin" over TFTP on the IP address 192.168.10.100. Flashing the original firmware on it has no effect however, as the nvram is not affected by flashing such an image. Surprisingly enough, OpenWRT offers a build for this model of router and flashing that onto the router exposes an SSH shell to the OpenWRT ASH. 
 
 Using cat /proc/mtd I figured out that there are 4 MTD blocks on the SoC:
 
@@ -38,7 +38,7 @@ Transferring them onto my PC and inspecting them with hexedit it became clear th
 
 ## Miscellaneous
 
-- The Router exposes a telnet shell on port 2323 by default. Changing the password in any way however completely destroys the login and while the telnet port is exposed, login is not possible. It is unknown if this is intentional or not, however, as the telnet shell stays open it is likely unintended and caused by the chpasswd script not working correctly - running it will manually will produce the same result.
+- The Router exposes a telnet shell on port 2323 by default. Changing the password in any way however completely destroys the login and while the telnet port is exposed, login is not possible. It is unknown if this is intentional or not, however, as the telnet shell stays open it is likely unintended and caused by the chpasswd script not working correctly - running it manually will produce the same result.
 - The Busybox version even on the latest version is outdated - it's v1.12.1 (2019-07-08 10:17:20 CST).
 - The Linux Version is also outdated - `Linux version 2.6.36 (root@ubuntu) (gcc version 4.6.3 (Buildroot 2012.11.1) ) #1730 Mon Jul 8 10:23:14 CST 2019`
 - The credentials are stored in plain text in u-boot-env:
