@@ -4,7 +4,7 @@ The Maginon WL-755 is a cheap Router/AP/WiFi-Extender sold a few years ago by Al
 
 ## The Exploit
 
-Logging in for the first time, the default user and password is admin/admin. After logging in it prompts you to change your password - but it can easily be dismissed by clicking "cancel". Navigating to the password settings, it allows you to set a new password and change the login username. Setting $(reboot) as the password will cause the connection to be dropped and the router will restart. When it boots up again, shortly after establishing a connection over LAN, it will reboot again. As the Reset button is monitored by a script that is run after the system properly booted up it has no effect and the router will bootloop forever. Instead of reboot other commands can be put in, for example, here I made the router establish a telnet connection on port 4444 using $(telnetd${IFS}-p${IFS}4444):
+Logging in for the first time, the default user and password is admin/admin. After logging in it prompts you to change your password - but it can easily be dismissed by clicking "cancel". Navigating to the password settings, it allows you to set a new password and change the login username. Setting \$(reboot) as the password will cause the connection to be dropped and the router will restart. When it boots up again, shortly after establishing a connection over LAN, it will reboot again. As the Reset button is monitored by a script that is run after the system properly booted up it has no effect and the router will bootloop forever. Instead of reboot other commands can be put in, for example, here I made the router establish a telnet connection on port 4444 using \$(telnetd\${IFS}-p\${IFS}4444):
 
 ## Recovery
 
