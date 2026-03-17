@@ -4,7 +4,7 @@ This Writeup covers a Arbitrary Code Execution exploit on a commonly sold Magino
 
 ## About
 
-The Maginon WL-755 is a cheap Router/AP/WiFi-Extender sold a few years ago by Aldi, a german supermarket chain. It is based on the Wavlink WL-WN577A2 and uses a MediaTek MT7628AN MIPS processor with integrated 2,4GHz and LAN. It also comes with a MediaTek MT7610E for the 5GHz network. The Firmware underneath is a simple linux-based system with a BusyBox shell. It uses the "Das U-Boot" bootloader for bootup but unfortunately does not come with any exposed UART pins. 
+The Maginon WL-755 is a cheap Router/AP/WiFi-Extender sold a few years ago by Aldi, a german supermarket chain. It is based on the Wavlink WL-WN577A2 and uses a MediaTek MT7628AN MIPS processor with integrated 2,4GHz and LAN. It also comes with a MediaTek MT7610E for the 5GHz network. The Firmware underneath is a simple linux-based system with a BusyBox shell. It uses the "Das U-Boot" bootloader for bootup but unfortunately does not expose any UART. 
 
 ## The Exploit
 
