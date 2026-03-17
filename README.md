@@ -18,6 +18,7 @@ Setting `$(reboot)` as the password will cause the connection to be dropped and 
 
 <img width="565" height="189" alt="nmap_2" src="https://github.com/user-attachments/assets/0c148640-c4f5-40f3-9021-0c6d4c94cb99" />
 
+It has to be noted that the password field does not allow whitespaces. As such, ${IFS} has to be used for whitespaces.
 Using this an attacker could inject malicious code into the router. These products are often sold as "plug and play", meaning users are likely to not change the default password once it starts working. This poses a high risk to anyone using these devices. 
 
 ## Recovery
@@ -37,4 +38,9 @@ Transferring them onto my PC and inspecting them with hexedit it became clear th
 
 ## Miscellaneous
 
-The Router exposes a telnet shell on port 2323 by default. Changing the password in any way however completely destroys the login and while the telnet port is exposed, login is not possible. It is unknown if this is intentional or not, however, as the telnet shell stays open it is likely unintended and caused by the chpasswd script not working correctly - running it will manually will produce the same result.
+- The Router exposes a telnet shell on port 2323 by default. Changing the password in any way however completely destroys the login and while the telnet port is exposed, login is not possible. It is unknown if this is intentional or not, however, as the telnet shell stays open it is likely unintended and caused by the chpasswd script not working correctly - running it will manually will produce the same result.
+- The Busybox version even on the latest version is outdated - it's v1.12.1 (2019-07-08 10:17:20 CST).
+- The Linux Version is also outdated - `Linux version 2.6.36 (root@ubuntu) (gcc version 4.6.3 (Buildroot 2012.11.1) ) #1730 Mon Jul 8 10:23:14 CST 2019`
+- The credentials are stored in plain text in u-boot-env:
+
+<img width="441" height="194" alt="hexedit" src="https://github.com/user-attachments/assets/5293fb9c-a374-406a-9c57-a530ca7d6a52" />
